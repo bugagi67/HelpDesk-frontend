@@ -1,8 +1,8 @@
 # HelpDesk: Frontend
 
- GH-PAGES - https://bugagi67.github.io/HelpDesk-frontend/
+ **GH-PAGES - https://bugagi67.github.io/HelpDesk-frontend/**
 
- backend - https://helpdesk-backend-mcms.onrender.com/
+ **BACKEND - https://helpdesk-backend-mcms.onrender.com/**
 
 Легенда
 Часть API вами написано, пора приступить к своим прямым обязанностям - написанию фронтенда, который будет с этим API работать.
