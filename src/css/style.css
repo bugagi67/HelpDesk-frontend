@@ -6,7 +6,6 @@
 
 body {
   font-family: sans-serif;
-  /* Более общий шрифт */
 }
 
 .ticket-list {
@@ -21,7 +20,6 @@ body {
 .ticket {
   display: flex;
   flex-direction: column;
-  /* Вертикальная компоновка */
   align-items: stretch;
   margin-bottom: 5px;
   width: 100%;
@@ -31,7 +29,6 @@ body {
   background-color: #f9f9f9;
   position: relative;
   cursor: pointer;
-  /* Указывает, что элемент кликабелен */
 }
 
 .ticket:hover {
@@ -42,27 +39,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Элементы равномерно распределены */
 }
 
 .detailDescription {
   display: none;
-  /* Скрыто по умолчанию */
   font-size: 14px;
-  /* Размер шрифта для описания */
   color: #444;
-  /* Цвет текста */
   margin-top: 10px;
-  /* Отступ сверху */
   padding-top: 10px;
-  /* Внутренний отступ сверху */
   border-top: 1px solid #ddd;
-  /* Разделительная линия сверху */
   line-height: 1.5;
   margin-left: 40px;
 }
 
-/* Скрываем стандартный чекбокс */
 .ticket input[type="checkbox"] {
   opacity: 0;
   position: absolute;
@@ -70,11 +59,9 @@ body {
   height: 20px;
   cursor: pointer;
   z-index: 1;
-  /* Чтобы был выше псевдоэлемента */
   left: 10px;
 }
 
-/* Создаем кастомный чекбокс */
 .ticket label::before {
   content: "";
   display: inline-block;
@@ -90,14 +77,10 @@ body {
   transform: translateY(-50%);
 }
 
-/* Стилизуем checked состояние */
 .ticket input[type="checkbox"]:checked+label::before {
   background-color: hsl(0, 100%, 77%);
-  /* Цвет заливки при checked */
   border-color: hsl(0, 100%, 77%);
-  /* Цвет рамки при checked */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
-  /* SVG галочка */
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px;
@@ -107,7 +90,6 @@ body {
   flex-grow: 1;
   font-size: 14px;
   padding-left: 40px;
-  /* Отступ для текста от кастомного чекбокса */
 }
 
 .date {
@@ -126,7 +108,6 @@ body {
   cursor: pointer;
   font-size: 12px;
   line-height: 1;
-  /* Убираем лишний интервал */
   margin-left: 10px;
 }
 
@@ -154,7 +135,6 @@ img:hover {
   margin-bottom: 10px;
 }
 
-/* Базовые стили для модалки */
 .modal {
   position: fixed;
   top: 0;
@@ -162,14 +142,12 @@ img:hover {
   width: 100vw;
   height: 100vh;
   display: none;
-  /* Скрыто по умолчанию */
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 
-/* Контейнер контента модального окна */
 .modal-content {
   background-color: #fff;
   padding: 20px 30px;
@@ -181,21 +159,18 @@ img:hover {
   margin: 100px auto;
 }
 
-/* Заголовок */
 .modal-content h2,
 .modal-content h3 {
   font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
-/* Текст */
 .modal-content p {
   font-size: 1rem;
   color: #444;
   margin-bottom: 20px;
 }
 
-/* Поля ввода */
 .modal-content input,
 .modal-content textarea {
   width: 100%;
@@ -211,7 +186,6 @@ img:hover {
   height: 100px;
 }
 
-/* Контейнер кнопок */
 .modal-actions,
 .modal-buttons {
   display: flex;
@@ -219,7 +193,6 @@ img:hover {
   gap: 10px;
 }
 
-/* Общие стили кнопок */
 .modal-button,
 .modal-buttons button {
   padding: 10px 20px;
@@ -230,7 +203,6 @@ img:hover {
   transition: background-color 0.3s ease;
 }
 
-/* Кнопка отмены */
 .modal-button.cancel,
 .modal-buttons button.cancel {
   background-color: #f1f1f1;
@@ -242,7 +214,6 @@ img:hover {
   background-color: #e0e0e0;
 }
 
-/* Кнопка удаления */
 .modal-button.confirm,
 .modal-buttons button.confirm {
   background-color: #ff4d4d;
@@ -254,7 +225,6 @@ img:hover {
   background-color: #e63939;
 }
 
-/* Кнопка "общего назначения" */
 .modal-buttons button:hover {
   background: hsl(0, 100%, 77%);
 }

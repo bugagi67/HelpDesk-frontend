@@ -11,6 +11,7 @@ export default async function renderTicketList(tickets) {
       element.created,
       element.description,
       element.id,
+      element.status,
     );
     ticketList.appendChild(ticket);
   });
@@ -18,9 +19,9 @@ export default async function renderTicketList(tickets) {
 
 export function clearTicketList() {
   const ticketList = document.querySelectorAll(".ticket");
-  ticketList.forEach(element => {
+  ticketList.forEach((element) => {
     element.remove();
-  })  
+  });
 }
 
 export async function addTicket() {
@@ -112,4 +113,22 @@ export async function editTicket(id, current) {
 export async function removeTicket(id) {
   const response = await deleteTicket(id);
   return response;
+}
+
+export async function setStatusTicket(id, boolean) {
+  const data = {
+    status: boolean,
+  };
+
+  try {
+    const response = await updateTicket(id, data);
+    if (!response) {
+      console.error("Некорректный ответ от сервера при редактировании тикета");
+      return null;
+    }
+    return response;
+  } catch (error) {
+    console.error("Ошибка при редактировании статуса тикета", error);
+    return;
+  }
 }

@@ -9,7 +9,9 @@ import renderTicketList, {
   addTicket,
   closeDescription,
   editTicket,
-  removeTicket, clearTicketList
+  removeTicket,
+  clearTicketList,
+  setStatusTicket,
 } from "./components/ticketList";
 
 export default async function main() {
@@ -23,8 +25,18 @@ export default async function main() {
   const allTickets = await getAllTickets();
   renderTicketList(allTickets);
 
-   container.addEventListener("click", async (e) => {
+  container.addEventListener("click", async (e) => {
     const target = e.target;
+    if (target.classList.contains("ticket1")) {
+      const targetTicket = target.closest(".ticket");
+      const id = targetTicket.dataset.id;
+      if (target.checked) {
+        setStatusTicket(id, true);
+      } else {
+        setStatusTicket(id, false);
+      }
+    }
+
     if (target.classList.contains("add-ticket")) {
       modalActive = target;
       showModalAddTicket();
@@ -32,8 +44,9 @@ export default async function main() {
 
     if (target.classList.contains("edit")) {
       currentEditTicket = target.closest(".ticket");
+      const id = currentEditTicket.dataset.id;
       modalActive = target;
-      showModalEditTicket();
+      showModalEditTicket(id);
     }
 
     if (target.classList.contains("delete")) {
@@ -42,7 +55,7 @@ export default async function main() {
 
       const newList = await removeTicket(index);
       clearTicketList();
-      renderTicketList(Array.from(newList))
+      renderTicketList(Array.from(newList));
     }
 
     if (
@@ -101,7 +114,6 @@ export default async function main() {
   });
 
   document.addEventListener("click", (e) => {
-    e.preventDefault();
     const target = e.target;
     if (target.tagName === "BODY" || target.tagName === "HTML") {
       closeDescription();

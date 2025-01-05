@@ -58,7 +58,7 @@ export async function getTicketDetails(id) {
       method: "ticketById",
       id: id,
     },
-    responseType: "text",
+    responseType: "json",
   });
   return response;
 }
@@ -102,7 +102,7 @@ export async function deleteTicket(id) {
       responseType: "json",
     });
     return response;
-  } catch (error) { 
+  } catch (error) {
     console.error("Ошибка при удалении тикета:", error);
   }
 }

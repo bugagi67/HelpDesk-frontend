@@ -1,4 +1,4 @@
-export const shortTicketHtml = (shortDesc, date, detailDesc, id) => {
+export const shortTicketHtml = (shortDesc, date, detailDesc, id, status) => {
   const wrapper = document.createElement("div");
   wrapper.classList.add("ticket");
   wrapper.dataset.id = id;
@@ -7,13 +7,14 @@ export const shortTicketHtml = (shortDesc, date, detailDesc, id) => {
   wrapper.appendChild(short);
   const inputCheckbox = document.createElement("input");
   inputCheckbox.type = "checkbox";
-  inputCheckbox.id = "ticket1";
+  inputCheckbox.className = "ticket1";
+  inputCheckbox.checked = status;
   short.appendChild(inputCheckbox);
-  const labelChecbox = document.createElement("label");
-  labelChecbox.for = "ticket1";
-  labelChecbox.classList.add("label");
-  labelChecbox.textContent = shortDesc;
-  short.appendChild(labelChecbox);
+  const labelCheckbox = document.createElement("label");
+  labelCheckbox.for = "ticket1";
+  labelCheckbox.classList.add("label");
+  labelCheckbox.textContent = shortDesc;
+  short.appendChild(labelCheckbox);
   const spanDate = document.createElement("span");
   spanDate.classList.add("date");
   spanDate.textContent = date;

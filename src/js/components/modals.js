@@ -1,3 +1,5 @@
+import { getTicketDetails } from "../api/api";
+
 export function showModalAddTicket() {
   const modal = document.querySelector(".modal");
   modal.style.display = "block";
@@ -12,9 +14,22 @@ export function closeModalAddTicket() {
   modal.style.display = "none";
 }
 
-export function showModalEditTicket() {
+export async function showModalEditTicket(id) {
   const modal = document.querySelector(".editTicketModal");
-  modal.style.display = "block";
+  const inputShortDesc = modal.querySelector(".shortDescription");
+  const detailedDesc = modal.querySelector(".detailedDescription");
+
+  const response = await getTicketDetails(id);
+
+  try {
+    if (response) {
+      modal.style.display = "block";
+      inputShortDesc.value = response.name;
+      detailedDesc.value = response.description;
+    }
+  } catch (error) {
+    console.error("Некорректный ответ сервера ", error);
+  }
 }
 
 export function closeModalEditTicket() {
