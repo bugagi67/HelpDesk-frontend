@@ -6,7 +6,7 @@ async function sendRequest(options = {}) {
     method = "GET",
   } = options;
 
-  const URL = "http://localhost:9000/";
+  const URL = "https://helpdesk-backend-mcms.onrender.com";
   const params = new URLSearchParams(data).toString();
   const fullURL =
     method === "GET" ? `${URL}?${params}` : `${URL}?method=${data.method}`;

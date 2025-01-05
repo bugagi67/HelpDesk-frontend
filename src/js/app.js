@@ -3,6 +3,8 @@ import {
   closeModalAddTicket,
   showModalEditTicket,
   closeModalEditTicket,
+  showModalDeleteTicket,
+  closeModalDeleteTicket,
 } from "./components/modals";
 import getAllTickets from "./api/api";
 import renderTicketList, {
@@ -18,6 +20,7 @@ export default async function main() {
   const container = document.querySelector(".ticket-list");
   const form = document.querySelector("#addTicketForm");
   const formEdit = document.querySelector("#editTicketForm");
+  const formDelete = document.querySelector("#delete-modal");
   let currentDeleteTicket = null;
   let currentEditTicket = null;
   let modalActive = null;
@@ -50,12 +53,8 @@ export default async function main() {
     }
 
     if (target.classList.contains("delete")) {
-      currentDeleteTicket = target.closest(".ticket");
-      const index = currentDeleteTicket.dataset.id;
-
-      const newList = await removeTicket(index);
-      clearTicketList();
-      renderTicketList(Array.from(newList));
+      currentDeleteTicket = target.closest(".ticket").dataset.id;
+      showModalDeleteTicket();
     }
 
     if (
@@ -90,6 +89,22 @@ export default async function main() {
     if (target.classList.contains("editSubmit")) {
       editTicket(index, currentEditTicket);
       closeModalEditTicket();
+    }
+  });
+
+  formDelete.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const target = e.target;
+
+    if (target.classList.contains("cancel-delete")) {
+      closeModalDeleteTicket();
+    }
+
+    if (target.classList.contains("confirm-delete")) {
+      const newList = await removeTicket(currentDeleteTicket);
+      clearTicketList();
+      renderTicketList(Array.from(newList));
+      closeModalDeleteTicket();
     }
   });
 

@@ -40,3 +40,13 @@ export function closeModalEditTicket() {
   detailedDesc.value = "";
   modal.style.display = "none";
 }
+
+export function showModalDeleteTicket() {
+  const modal = document.querySelector("#delete-modal");
+  modal.style.display = "block";
+}
+
+export function closeModalDeleteTicket() {
+  const modal = document.querySelector("#delete-modal");
+  modal.style.display = "none";
+}
