@@ -21,12 +21,12 @@ export const shortTicketHtml = (shortDesc, date, detailDesc, id, status) => {
   short.appendChild(spanDate);
   const editImg = document.createElement("img");
   editImg.classList.add("edit");
-  editImg.src = "./assets/images/edit.png";
+  editImg.src = "./images/edit.png";
   editImg.alt = "редактировать";
   short.appendChild(editImg);
   const deleteImg = document.createElement("img");
   deleteImg.classList.add("delete");
-  deleteImg.src = "./assets/images/delete.png";
+  deleteImg.src = "./images/delete.png";
   deleteImg.alt = "удалить";
   short.appendChild(deleteImg);
   const description = document.createElement("div");
