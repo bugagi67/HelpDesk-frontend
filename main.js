@@ -7664,12 +7664,12 @@ var shortTicketHtml = function shortTicketHtml(shortDesc, date, detailDesc, id, 
   _short.appendChild(spanDate);
   var editImg = document.createElement("img");
   editImg.classList.add("edit");
-  editImg.src = "./assets/images/edit.png";
+  editImg.src = "./images/edit.png";
   editImg.alt = "редактировать";
   _short.appendChild(editImg);
   var deleteImg = document.createElement("img");
   deleteImg.classList.add("delete");
-  deleteImg.src = "./assets/images/delete.png";
+  deleteImg.src = "./images/delete.png";
   deleteImg.alt = "удалить";
   _short.appendChild(deleteImg);
   var description = document.createElement("div");
